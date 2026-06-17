@@ -1,0 +1,5 @@
+__pycache__
+*.json
+*.jsonl
+lm-evaluation-harness
+*.egg-info
