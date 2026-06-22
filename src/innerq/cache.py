@@ -87,8 +87,8 @@ class InnerqDynamicLayer(CacheLayerMixin):
         self.key_quantize_over_token = getattr(config, 'key_quantize_over_token', False)
         self.value_quantize_over_token = getattr(config, 'value_quantize_over_token', True)
 
-        self.key_quantize_mode = QMode.from_str(config.key_quantize_mode)
-        self.value_quantize_mode = QMode.from_str(config.value_quantize_mode)
+        self.key_quantize_mode = QMode.from_str(getattr(config, 'key_quantize_mode', 'symmetric'))
+        self.value_quantize_mode = QMode.from_str(getattr(config, 'value_quantize_mode', 'symmetric'))
 
         if self.key_quantize_mode == QMode.HYBRID:
             key_asym_qfunc = quantize_tokendim_asym if self.key_quantize_over_token else quantize_channeldim_asym
